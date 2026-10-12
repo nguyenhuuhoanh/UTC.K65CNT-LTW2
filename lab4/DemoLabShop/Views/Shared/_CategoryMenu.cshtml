@@ -1,0 +1,19 @@
+@{
+    var categories = DemoLabShop.Models.Category.GetAll();
+}
+
+<div class="card mb-3">
+    <div class="card-header bg-primary text-white">Danh mục sản phẩm</div>
+    <ul class="list-group list-group-flush">
+        @foreach (var c in categories)
+        {
+            <li class="list-group-item">
+                <a href="#" class="text-decoration-none">@c.Name</a>
+            </li>
+        }
+    </ul>
+</div>
+
+<div class="card">
+    <img src="/images/products/banner-doicu.jpg" class="card-img-top" alt="Đổi cũ lấy mới" onerror="this.src='https://via.placeholder.com/250x200?text=Doi+cu+lay+moi'">
+</div>
