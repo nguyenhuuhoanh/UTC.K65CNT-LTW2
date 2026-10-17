@@ -1,0 +1,35 @@
+@* Author: NHH *@
+
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - NetCoreLA7NHH</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    @await RenderSectionAsync("Css", required: false)
+</head>
+<body>
+    <nav class="navbar navbar-expand-sm navbar-dark bg-dark">
+        <div class="container">
+            <a class="navbar-brand" asp-area="" asp-controller="NHHHome" asp-action="NHHIndex">NetCoreLA7NHH</a>
+            <ul class="navbar-nav">
+                <li class="nav-item"><a class="nav-link" asp-area="" asp-controller="NHHHome" asp-action="NHHIndex">Home</a></li>
+                <li class="nav-item"><a class="nav-link" asp-area="" asp-controller="NHHHome" asp-action="NHHAbout">About</a></li>
+                <li class="nav-item"><a class="nav-link" asp-area="" asp-controller="NHHHome" asp-action="NHHContact">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+    <partial name="_NHHCookieConsentPartial" />
+    <div class="container body-content py-3">
+        @RenderBody()
+        <hr />
+        <footer>
+            <p>&copy; 2026 - NetCoreLA7NHH</p>
+        </footer>
+    </div>
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>

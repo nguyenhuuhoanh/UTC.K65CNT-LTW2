@@ -1,0 +1,110 @@
+@* Author: NHH *@
+
+@{
+    var ctrl = ViewContext.RouteData.Values["controller"]?.ToString();
+    string Open(string c) => ctrl == c ? "menu-open" : "";
+    string Active(string c) => ctrl == c ? "active" : "";
+}
+<aside class="main-sidebar sidebar-dark-primary elevation-4">
+    <a asp-area="Admin" asp-controller="NHHDashboard" asp-action="NHHIndex" class="brand-link">
+        <img src="~/dist/img/AdminLTELogo.png" alt="Logo" class="brand-image img-circle elevation-3" style="opacity:.8">
+        <span class="brand-text font-weight-light">AdminLTE NHH</span>
+    </a>
+    <div class="sidebar">
+        <div class="user-panel mt-3 pb-3 mb-3 d-flex">
+            <div class="image">
+                <img src="~/dist/img/user2-160x160.jpg" class="img-circle elevation-2" alt="User">
+            </div>
+            <div class="info">
+                <a href="#" class="d-block">Admin NHH</a>
+            </div>
+        </div>
+        <nav class="mt-2">
+            <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+                <li class="nav-item">
+                    <a asp-area="Admin" asp-controller="NHHDashboard" asp-action="NHHIndex" class="nav-link @Active("NHHDashboard")">
+                        <i class="nav-icon fas fa-th"></i><p>Trang chính</p>
+                    </a>
+                </li>
+                <li class="nav-item @Open("NHHCategory")">
+                    <a href="#" class="nav-link @Active("NHHCategory")">
+                        <i class="nav-icon fas fa-list-alt"></i>
+                        <p>Danh mục<i class="right fas fa-angle-left"></i></p>
+                    </a>
+                    <ul class="nav nav-treeview">
+                        <li class="nav-item">
+                            <a asp-area="Admin" asp-controller="NHHCategory" asp-action="NHHIndex" class="nav-link">
+                                <i class="far fa-circle nav-icon"></i><p>Danh sách</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a asp-area="Admin" asp-controller="NHHCategory" asp-action="NHHCreate" class="nav-link">
+                                <i class="far fa-circle nav-icon"></i><p>Thêm mới</p>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+                <li class="nav-item @Open("NHHProduct")">
+                    <a href="#" class="nav-link @Active("NHHProduct")">
+                        <i class="nav-icon fas fa-boxes"></i>
+                        <p>Sản phẩm<i class="right fas fa-angle-left"></i></p>
+                    </a>
+                    <ul class="nav nav-treeview">
+                        <li class="nav-item">
+                            <a asp-area="Admin" asp-controller="NHHProduct" asp-action="NHHIndex" class="nav-link">
+                                <i class="far fa-circle nav-icon"></i><p>Danh sách</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a asp-area="Admin" asp-controller="NHHProduct" asp-action="NHHCreate" class="nav-link">
+                                <i class="far fa-circle nav-icon"></i><p>Thêm mới</p>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+                <li class="nav-item @Open("NHHBlog")">
+                    <a href="#" class="nav-link @Active("NHHBlog")">
+                        <i class="nav-icon fas fa-blog"></i>
+                        <p>Blogs<i class="right fas fa-angle-left"></i></p>
+                    </a>
+                    <ul class="nav nav-treeview">
+                        <li class="nav-item">
+                            <a asp-area="Admin" asp-controller="NHHBlog" asp-action="NHHIndex" class="nav-link">
+                                <i class="far fa-circle nav-icon"></i><p>Danh sách</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a asp-area="Admin" asp-controller="NHHBlog" asp-action="NHHCreate" class="nav-link">
+                                <i class="far fa-circle nav-icon"></i><p>Thêm mới</p>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+                <li class="nav-item @Open("NHHBanner")">
+                    <a href="#" class="nav-link @Active("NHHBanner")">
+                        <i class="nav-icon fas fa-image"></i>
+                        <p>Banner<i class="right fas fa-angle-left"></i></p>
+                    </a>
+                    <ul class="nav nav-treeview">
+                        <li class="nav-item">
+                            <a asp-area="Admin" asp-controller="NHHBanner" asp-action="NHHIndex" class="nav-link">
+                                <i class="far fa-circle nav-icon"></i><p>Danh sách</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a asp-area="Admin" asp-controller="NHHBanner" asp-action="NHHCreate" class="nav-link">
+                                <i class="far fa-circle nav-icon"></i><p>Thêm mới</p>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+                <li class="nav-item">
+                    <a href="#" class="nav-link"><i class="nav-icon fas fa-users"></i><p>Khách hàng</p></a>
+                </li>
+                <li class="nav-item">
+                    <a href="#" class="nav-link"><i class="nav-icon fas fa-shopping-cart"></i><p>Đơn hàng</p></a>
+                </li>
+            </ul>
+        </nav>
+    </div>
+</aside>
