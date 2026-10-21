@@ -1,10 +1,13 @@
-﻿@{
+@{
     ViewData["Title"] = "Thêm mới Sinh viên";
     Layout = "~/Views/Shared/MyLayout.cshtml";
 }
 @model Student
 <div>
-    <form asp-controller="Student" asp-action="Create" method="post" enctype="multipart/form-data" class="mt-3">
+    @* Cách 1: HTML thuần: <form action="/Admin/Student/Add" method="post" ...> *@
+    @* Cách 2: asp-controller + asp-action *@
+    @* Cách 3: asp-route (đang dùng) *@
+    <form asp-route="Add" method="post" enctype="multipart/form-data" class="mt-3">
         <div style="margin-top:7px" class="form-group row">
             <label asp-for="Name" class="col-sm-2 col-form-label"></label>
             <div class="col-sm-10">

@@ -1,7 +1,6 @@
-﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Lab1.Models;
-using System.IO; //cai nay de upload avt
 
 namespace Lab1.Controllers
 {
@@ -75,19 +74,20 @@ namespace Lab1.Controllers
         {
             if (AvatarFile != null && AvatarFile.Length > 0)
             {
-                
-                var path = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", "images", AvatarFile.FileName);
+                // Chỉ cho phép đuôi ảnh, đặt tên ngẫu nhiên để tránh path traversal / ghi đè file
+                var ext = Path.GetExtension(AvatarFile.FileName).ToLowerInvariant();
+                if (!new[] { ".jpg", ".jpeg", ".png", ".gif" }.Contains(ext))
+                    return BadRequest("Chỉ cho phép file ảnh jpg, jpeg, png, gif");
 
+                var fileName = Guid.NewGuid() + ext;
+                var path = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", "images", fileName);
+                Directory.CreateDirectory(Path.GetDirectoryName(path)!);
                 using (var stream = new FileStream(path, FileMode.Create))
                 {
                     AvatarFile.CopyTo(stream);
                 }
+                s.AvatarUrl = "/images/" + fileName;
             }
-            if (AvatarFile != null && AvatarFile.Length > 0)
-            {
-                s.AvatarUrl = "/images/" + AvatarFile.FileName;
-            }
-
 
             s.Id = listStudents.Last<Student>().Id + 1;
             listStudents.Add(s);

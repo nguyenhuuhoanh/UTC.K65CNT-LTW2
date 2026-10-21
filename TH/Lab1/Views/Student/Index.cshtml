@@ -1,4 +1,4 @@
-﻿@*@{
+@*@{
     ViewData["Title"] = "Student List";
     Layout = "~/Views/Shared/MyLayout.cshtml";
 }*@
@@ -9,11 +9,17 @@
 
 
 @model IEnumerable<Student>
-<a asp-controller="Student" asp-action="Create" class="btn btn-primary">Create Student</a>
+@* Cách 1: HTML thuần *@
+@*<a href="/Admin/Student/Add" class="btn btn-primary">Create Student</a>*@
+@* Cách 2: Tag Helper asp-action *@
+@*<a asp-controller="Student" asp-action="Create" class="btn btn-primary">Create Student</a>*@
+@* Cách 3: Tag Helper asp-route (gọi route theo tên) *@
+<a asp-route="StudentAdd" class="btn btn-primary">Create Student</a>
 <table class="table table-striped">
     <thead>
         <tr>
             <th>Mã</th>
+            <th>Ảnh</th>
             <th>Họ tên</th>
             <th>Ngày sinh</th>
             <th>Ngành</th>
