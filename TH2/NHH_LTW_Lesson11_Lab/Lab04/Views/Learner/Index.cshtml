@@ -1,0 +1,62 @@
+﻿@model IEnumerable<Lab04.Models.Learner>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/MyLayout.cshtml";
+}
+
+<h1>Learner List</h1>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                Mã
+            </th>
+            <th>
+                Tên
+            </th>
+            <th>
+                Họ
+            </th>
+            <th>
+                Ngành
+            </th>
+            <th>
+                Ngày nhập học
+            </th>
+            <th>
+                Chức năng
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @item.LearnerID
+            </td>
+            <td>
+                    @item.FirstMidName
+            </td>
+            <td>
+                @item.LastName  
+            </td>
+            <td>
+                    @item.Major.MajorName
+            </td>
+            <td>
+                    @item.EnrollmentDate
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.LearnerID">Edit</a> |
+                <a asp-action="Delete" asp-route-id="@item.LearnerID">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
+<p>
+    <a asp-action="Create" class="btn btn-primary">Create New Student</a>
+</p>
