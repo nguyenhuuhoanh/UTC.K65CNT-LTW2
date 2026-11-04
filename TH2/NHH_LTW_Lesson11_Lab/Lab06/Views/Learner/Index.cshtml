@@ -1,0 +1,73 @@
+@model IEnumerable<Lab06.Models.Learner>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/MyLayout.cshtml";
+}
+
+<div class="ms-2 mx-2">
+    <h1>Learner List</h1>
+    @await Component.InvokeAsync("Major")
+
+    <!-- Form tim kiem -->
+    <form class="d-none d-md-inline-block form-inline ms-auto me-0 me-md-3 my-2 my-md-0">
+        <div class="input-group">
+            <input id="keyword" class="form-control" name="keyword"
+                   type="text" placeholder="Search learner" />
+            <button id="btnSearch" class="btn btn-primary" type="button">
+                <i class="fas fa-search"></i>
+            </button>
+        </div>
+    </form>
+
+    <div id="content">
+        <partial name="LearnerTable" model="Model" />
+    </div>
+
+    <a asp-action="Create" class="btn btn-primary">Create New Student</a>
+</div>
+
+@section Scripts {
+    <script>
+        var filterUrl = "@Url.Action("LearnerFilter", "Learner")";
+
+        function loadData(data) {
+            $.ajax({
+                url: filterUrl,
+                data: data,
+                success: function (response) {
+                    $("div#content").html(response);
+                }
+            });
+        }
+
+        // Click vao so trang
+        $('body').on('click', 'li.page-item', function (e) {
+            e.preventDefault();
+            loadData({
+                mid: $(this).attr("mid"),
+                keyword: $(this).attr("keyword"),
+                pageIndex: $(this).attr("page")
+            });
+        });
+
+        // Click vao chuyen nganh
+        $(".nav li").click(function (e) {
+            e.preventDefault();
+            loadData({ mid: $(this).attr("id") });
+        });
+
+        // Tim kiem
+        $("button#btnSearch").click(function () {
+            loadData({ keyword: $("#keyword").val() });
+        });
+
+        // Nhan Enter trong o tim kiem
+        $("#keyword").keypress(function (e) {
+            if (e.which === 13) {
+                e.preventDefault();
+                $("button#btnSearch").click();
+            }
+        });
+    </script>
+}
