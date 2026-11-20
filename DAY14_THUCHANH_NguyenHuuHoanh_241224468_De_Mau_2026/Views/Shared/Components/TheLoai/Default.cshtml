@@ -1,0 +1,6 @@
+﻿@model IEnumerable<NguyenHuuHoanh_241224468.Models.TheLoai>
+
+@foreach (var item in Model)
+{
+	<li><a class="theloai" asp-controller="Home" asp-action="LocSach" asp-route-id="@item.MaTl" >@item.TenTl</a></li>
+}

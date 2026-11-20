@@ -1,0 +1,17 @@
+﻿@model IEnumerable<NguyenHuuHoanh_241224468.Models.Sach>
+
+<div class="section-head">
+    <h3>@ViewBag.TieuDe</h3>
+    <a href="#">Xem tất cả &rsaquo;</a>
+</div>
+
+<div class="grid">
+    @foreach (var item in Model)
+    {
+        <div class="book-card">
+            <a href="#"><img src="~/images/@item.Anh" alt="@item.TenSach" /></a>
+            <h2>@item.TenSach</h2>
+            <div class="book-foot"><span class="price">@item.Gia</span><button class="btn-buy">Thêm vào giỏ</button></div>
+        </div>
+    }
+</div>
