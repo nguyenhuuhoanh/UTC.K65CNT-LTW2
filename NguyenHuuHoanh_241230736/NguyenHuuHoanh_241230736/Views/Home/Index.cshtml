@@ -1,0 +1,18 @@
+﻿@model List<NguyenHuuHoanh_241230736.Models.HangHoa>
+@{
+
+    ViewData["Title"] = "Nguyen Huu Hoanh";
+}
+<div class="content_top">
+    <div class="heading">
+        <h3>Nguyen Huu Hoanh</h3>
+    </div>
+    <div class="see">
+        <p><a asp-controller="HangHoa" asp-action="Create">them hang hoa</a></p>
+    </div>
+    <div class="clear"></div>
+</div>
+<div id="ds-hang-hoa">
+    
+    <partial name="DanhSachHang" model="Model" />
+</div>

@@ -1,0 +1,39 @@
+﻿@model NguyenHuuHoanh_241230736.Models.HangHoa
+@{
+    ViewData["Title"] = "Thêm hàng hóa";
+}
+
+<div class="content_top">
+    <div class="heading"><h3>Thêm hàng hóa mới</h3></div>
+    <div class="clear"></div>
+</div>
+
+<form asp-action="Create" method="post">
+    <p>
+        Loại hàng:<br />
+        <select asp-for="MaLoai" asp-items="(SelectList)ViewBag.MaLoai"></select>
+    </p>
+    <p>
+        Tên hàng:<br />
+        <input asp-for="TenHang" /><br />
+        <span asp-validation-for="TenHang" style="color:red"></span>
+    </p>
+    <p>
+        Giá:<br />
+        <input asp-for="Gia" type="text" /><br />
+        <span asp-validation-for="Gia" style="color:red"></span>
+    </p>
+    <p>
+        Tên file ảnh (ví dụ Img_1.jpg):<br />
+        <input asp-for="Anh" /><br />
+        <span asp-validation-for="Anh" style="color:red"></span>
+    </p>
+    <p>
+        <input type="submit" value="Lưu" />
+        <a asp-controller="Home" asp-action="Index">Quay lại</a>
+    </p>
+</form>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

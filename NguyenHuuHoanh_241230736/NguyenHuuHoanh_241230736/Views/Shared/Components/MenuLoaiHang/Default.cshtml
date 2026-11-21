@@ -1,0 +1,11 @@
+﻿@model List<NguyenHuuHoanh_241230736.Models.LoaiHang>
+<li class="active"><a asp-controller="Home" asp-action="Index">Nguyen Huu Hoanh</a></li>
+@foreach (var l in Model)
+{
+    <li>
+        <a href="@Url.Action("Index", "Home", new { maLoai = l.MaLoai })"
+           class="loai-link" data-id="@l.MaLoai">
+            @l.TenLoai
+        </a>
+    </li>
+}
