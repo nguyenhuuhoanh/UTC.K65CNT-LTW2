@@ -1,0 +1,14 @@
+﻿@model IEnumerable<NguyenHuuHoanh241230736.Models.TaiSan>
+<div class="grid">
+@foreach (var t in Model)
+    {
+        <div class="asset-card">
+            <a href="#"><img src="~/images/@t.Anh" alt="" /></a>
+            <h2>@t.TenTs</h2>
+            <div class="asset-foot">
+                <span class="price">@(t.NguyenGia?.ToString("0")) tr</span>
+                <a class="btn-buy" style="text-decoration: none" asp-action="Edit" asp-route-id="@t.MaTs">Chỉnh sửa</a>
+            </div>
+        </div>
+
+    }
