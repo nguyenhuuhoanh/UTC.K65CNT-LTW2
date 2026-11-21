@@ -1,0 +1,30 @@
+﻿<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>BookHub - Nhà sách trực tuyến</title>
+    <link href="~/css/layout.css" rel="stylesheet" type="text/css" />
+    <link href="~/css/style.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+    <!-- Begin Header -->
+    <partial name="NguyenHuuHoanh_Header" />    
+    <!-- End Header -->
+    <!-- Begin Main Content -->
+    <main class="main">
+        <div class="container">
+            <div class="banner"><img src="~/images/banner.jpg" alt="Banner" /></div>
+            @RenderBody() 
+         </div>
+    </main>
+    <!-- End Main Content -->
+    <!-- Begin Footer -->
+    <partial name="NguyenHuuHoanh_Footer" />    
+    <!-- End Footer -->
+    <div class="to-top">&uarr;</div>
+    <script src="~/js/jquery.min.js"></script>
+    <script src="~/js/main.js"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>

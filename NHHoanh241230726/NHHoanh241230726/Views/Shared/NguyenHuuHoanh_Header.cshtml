@@ -1,0 +1,31 @@
+﻿@inject NHHoanh241230726.Models.QLTaiSanContext db
+<header class="header">
+    <div class="topbar">
+        <div class="container">
+            <span>Hotline: <b>1900 6789</b> &nbsp;|&nbsp; Miễn phí vận chuyển đơn từ 300.000đ</span>
+            <span>Đăng nhập &nbsp;|&nbsp; Đăng ký</span>
+        </div>
+    </div>
+    <div class="header-main">
+        <div class="container">
+            <a href="index.html"><img src="~/images/logo.png" alt="BookHub" /></a>
+            <div class="cart-box">Giỏ hàng: 0 sản phẩm - 0đ</div>
+        </div>
+    </div>
+    <nav class="navbar">
+        <div class="container">
+            <ul class="menu">
+                <li class="active"><a asp-controller="Home" asp-action="Index">Nguyen Huu Hoanh</a></li>
+                @foreach (var l in db.LoaiTaisans.ToList())
+                {
+                    <li><a asp-controller="Home" asp-action="Index" class ="loai-link" 
+                        data-id="@l.MaLoai" data-ten ="@l.TenLoai">@l.TenLoai</a></li>
+                }
+            </ul>
+            <form class="search-box">
+                <input type="text" placeholder="Tìm sách..." />
+                <button type="button">Tìm</button>
+            </form>
+        </div>
+    </nav>
+</header>
